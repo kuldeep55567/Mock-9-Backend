@@ -5,7 +5,13 @@ const {connection} = require("./Config/db")
 const {UserRouter} = require("./Controller/UserRoute")
 const {PostRouter} = require("./Controller/PostRoute")
 app.use(express.json());
-
+app.get("/",(req,res)=>{
+    try {
+        res.send({"mssg":"Welcome to Social Media App"})
+    } catch (error) {
+        res.send(error.message)
+    }
+})
 app.use("/api",UserRouter)
 app.use("/api",PostRouter)
 app.listen(process.env.PORT,async()=>{
